@@ -22,7 +22,7 @@ fn main() {
     .invoke_handler(tauri::generate_handler![])
     // On Windows 11, the window will have rounded corners.
     .setup(|app| {
-      let window = app.get_window(&"main").unwrap();
+      let window = app.get_window("main").unwrap();
       window_shadows::set_shadow(&window, true).expect("Unsupported platform!");
       window.show().unwrap();
       Ok(())
@@ -54,13 +54,8 @@ fn main() {
       // If the event is a click to an item
       SystemTrayEvent::MenuItemClick { id, .. } => {
         // We compare the name of the item to...
-        match id.as_str() {
-          // `quit` is the item with the string `Quit Discord`
-          // If the user clicks quit, close discord-tauri
-          "quit" => {
+        if let "quit" = id.as_str() {
             std::process::exit(0);
-          }
-          _ => {}
         }
       }
       _ => {}
