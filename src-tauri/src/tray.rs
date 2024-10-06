@@ -32,6 +32,5 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
             }
         })
         .build(app);
-
     Ok(())
 }

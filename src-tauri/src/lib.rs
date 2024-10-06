@@ -3,19 +3,13 @@
   windows_subsystem = "windows"
 )]
 
-// Tauri imports
-use tauri::{
-    Manager
-};
-
 mod tray;
 
 #[cfg(target_os = "windows")]
 pub fn run() {
-  // Start Tauri
+    use tauri::Manager;
+
   tauri::Builder::default()
-    .plugin(tauri_plugin_notification::init())
-    .invoke_handler(tauri::generate_handler![])
     .setup(|app| {
         {
             let handle = app.handle();
@@ -26,6 +20,8 @@ pub fn run() {
         }
         Ok(())
     })
+    .plugin(tauri_plugin_notification::init())
+    .invoke_handler(tauri::generate_handler![])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
