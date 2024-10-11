@@ -16,7 +16,7 @@ pub fn run() {
             tray::create_tray(handle)?;
         }
         if let Some(webview_window) = app.get_webview_window("main") {
-            let _ = webview_window.show();
+            webview_window.show()?;
         }
         Ok(())
     })
