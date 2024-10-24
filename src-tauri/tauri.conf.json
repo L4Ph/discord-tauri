@@ -1,59 +1,54 @@
 {
-  "package": {
-    "productName": "Discord Tauri",
-    "version": "0.3.0"
-  },
-  "build": {
-    "distDir": "../dist",
-    "devPath": "../dist",
-    "beforeDevCommand": "",
-    "beforeBuildCommand": "",
-    "withGlobalTauri": true
-  },
-  "tauri": {
-    "systemTray": {
-      "iconPath": "icons/icon.png"
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
     },
-    "bundle": {
-      "active": true,
-      "targets": "all",
-      "identifier": "discord.tauri",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "resources": [],
-      "externalBin": [],
-      "copyright": "",
-      "category": "Social Networking",
-      "shortDescription": "",
-      "longDescription": "",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [],
+    "externalBin": [],
+    "copyright": "",
+    "category": "Social Networking",
+    "shortDescription": "",
+    "longDescription": "",
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "",
+      "exceptionDomain": "",
+      "signingIdentity": null,
+      "entitlements": null
+    },
+    "linux": {
       "deb": {
         "depends": []
-      },
-      "macOS": {
-        "frameworks": [],
-        "minimumSystemVersion": "",
-        "exceptionDomain": "",
-        "signingIdentity": null,
-        "entitlements": null
-      },
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
       }
-    },
-    "updater": {
-      "active": false
-    },
-    "allowlist": {
-      "all": false,
-      "notification": {
-        "all": true
+    }
+  },
+  "build": {
+    "beforeBuildCommand": "",
+    "frontendDist": "../dist",
+    "beforeDevCommand": "",
+    "devUrl": "https://discord.com/app"
+  },
+  "productName": "Discord Tauri",
+  "version": "0.3.0",
+  "identifier": "discord.tauri",
+  "plugins": {},
+  "app": {
+    "security": {
+      "csp": {
+        "default-src": "'unsafe-eval' 'unsafe-inline' 'self' blob: data: filesystem: ws: wss: http: https: tauri:",
+        "img-src": "'self' data:",
+        "connect-src": "ipc: http://ipc.localhost"
       }
     },
     "windows": [
@@ -66,14 +61,11 @@
         "minHeight": 500,
         "fullscreen": false,
         "visible": false,
-        "url": "index.html",
         "label": "main",
         "decorations": true,
         "center": true
       }
     ],
-    "security": {
-      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
-    }
+    "withGlobalTauri": true
   }
 }
